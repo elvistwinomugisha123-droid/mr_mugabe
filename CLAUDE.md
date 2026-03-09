@@ -77,6 +77,7 @@ Each tab columns: `id | name | price_ugx | validity | notes | active`
 18. `wakanet_4g_router_bundles`
 19. `wakanet_5g_bundles`
 20. `wakanet_5g_speeds`
+21. `lyca_monthly`
 
 ### Fallback:
 If Google Sheets API fails, fall back to `data/services.json` (local fallback file).

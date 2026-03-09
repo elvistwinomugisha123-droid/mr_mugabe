@@ -254,6 +254,23 @@
           ]
         }
       ]
+    },
+    {
+      "id": "lyca_data",
+      "name": "Lyca Data",
+      "icon": "signal",
+      "color": "purple",
+      "subcategories": [
+        {
+          "id": "lyca_monthly",
+          "name": "Monthly Data Offers",
+          "bundles": [
+            { "id": "lm1", "name": "20GB + 5GB Bonus", "price_ugx": 18000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "lm2", "name": "25GB + 15GB Bonus", "price_ugx": 27000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "lm3", "name": "50GB + 25GB Bonus", "price_ugx": 45000, "validity": "30 days", "notes": "", "active": true }
+          ]
+        }
+      ]
     }
   ]
 }
