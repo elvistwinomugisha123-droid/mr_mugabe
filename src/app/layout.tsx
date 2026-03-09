@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-background text-foreground">
-        <header className="bg-primary text-white sticky top-0 z-50">
+        <header className="bg-primary text-white sticky top-0 z-50 border-b border-white/10">
           <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
             <a href="/" className="text-lg font-bold text-accent">
               Mr. Mugabe
@@ -43,7 +43,7 @@ export default function RootLayout({
         <main className="max-w-lg mx-auto px-4 py-6 min-h-screen">
           {children}
         </main>
-        <footer className="bg-primary text-white py-6">
+        <footer className="bg-black/30 text-white py-6 border-t border-white/10">
           <div className="max-w-lg mx-auto px-4 text-center text-sm space-y-2">
             <p className="font-semibold text-accent">Mr. Mugabe Digital Services</p>
             <p>Along Kisaasi Bukoto Road, Opposite ORXY Petrol Station</p>
