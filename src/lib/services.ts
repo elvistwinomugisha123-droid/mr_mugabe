@@ -25,6 +25,7 @@ const SHEET_TABS = [
   "wakanet_4g_router_bundles",
   "wakanet_5g_bundles",
   "wakanet_5g_speeds",
+  "lyca_monthly",
 ];
 
 async function fetchSheetTab(tabName: string): Promise<Bundle[]> {
