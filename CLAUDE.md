@@ -1,15 +1,16 @@
 # Mr. Mugabe Digital Services — PWA Website
 
 ## Project Overview
-Build a **Progressive Web App (PWA)** for Mr. Mugabe Digital Services, a telecom reseller in Kampala, Uganda. Customers browse services, place orders, upload payment screenshots, and Mr. Mugabe receives instant WhatsApp alerts.
+A mobile-first **Progressive Web App (PWA)** for Mr. Mugabe Digital Services — a telecom reseller in Kampala, Uganda. Customers browse bundles, place orders with a payment screenshot, and Mr. Mugabe gets notified via WhatsApp.
 
 ## Tech Stack
 - **Framework:** Next.js 15 (App Router)
 - **Styling:** Tailwind CSS + shadcn/ui
 - **PWA:** next-pwa
 - **File Uploads:** Cloudinary (payment screenshots)
-- **Notifications:** Make.com webhook → WhatsApp to Mr. Mugabe
-- **Content Management:** Google Sheets API (Mr. Mugabe updates prices from his phone)
+- **Price Management:** Google Sheets API (Mr. Mugabe edits from his phone)
+- **Order Notification:** WhatsApp deep link (wa.me) — NO Make.com, NO webhooks
+- **Admin Page:** Built-in password-protected /admin page
 - **Hosting:** Vercel
 
 ## Business Info
@@ -32,16 +33,13 @@ Build a **Progressive Web App (PWA)** for Mr. Mugabe Digital Services, a telecom
 
 ---
 
-## Order Flow (Critical — Build Exactly This)
-1. Customer lands on homepage → sees service categories
-2. Customer picks a category (e.g. "Airtel Data")
-3. Customer picks a specific plan (e.g. "9GB — 9,000 UGX")
-4. Customer fills: Full Name + Phone Number
-5. Customer sees payment instructions (MTN MoMo or Airtel Money details)
-6. Customer uploads payment screenshot
-7. Customer clicks Submit
-8. Make.com webhook fires → Mr. Mugabe gets WhatsApp alert with full order details + screenshot link
-9. Customer sees "Order Received" confirmation page
+## Order Flow (Final)
+1. Customer browses → picks bundle
+2. Customer fills: Name + Phone + Payment method
+3. Customer uploads payment screenshot → goes to Cloudinary
+4. Customer clicks "Send Order via WhatsApp"
+5. WhatsApp opens with pre-filled message including Cloudinary screenshot URL
+6. Customer sends → Mr. Mugabe receives and confirms
 
 ---
 
@@ -49,63 +47,65 @@ Build a **Progressive Web App (PWA)** for Mr. Mugabe Digital Services, a telecom
 Mr. Mugabe manages all prices and services via a Google Sheet on his phone.
 
 ### How it works:
-- Google Sheet has tabs for each service category
-- Each row = one bundle: `name`, `price`, `validity`, `notes`, `active` (TRUE/FALSE)
-- Website fetches sheet data on every page load via Google Sheets API
-- If `active = FALSE`, that bundle is hidden from the website
-- Mr. Mugabe can add new rows anytime → instantly shows on site
+- Google Sheet has tabs for each service subcategory
+- Each row = one bundle: `id`, `name`, `price_ugx`, `validity`, `notes`, `active` (TRUE/FALSE)
+- Website fetches sheet data via Google Sheets API (cached 5 minutes)
+- If `active = FALSE`, that bundle is hidden from customers
+- Mr. Mugabe can add new rows anytime → shows on site after cache expires
 
-### Sheet Structure (replicate this exactly):
+### Sheet Structure:
 Each tab columns: `id | name | price_ugx | validity | notes | active`
 
-### Tabs:
-1. `airtel_weekly` 
+### Google Sheet Tabs:
+1. `airtel_weekly`
 2. `airtel_freaky_weekend`
 3. `airtel_4day_combo`
 4. `airtel_monthly`
 5. `airtel_mifi_monthly`
-6. `airtel_komuga`
-7. `mtn_monthly_data`
-8. `mtn_freedom_data`
-9. `mtn_gaga`
-10. `mtn_annual`
-11. `mtn_voice_freedom`
-12. `mtn_voice_monthly`
-13. `mtn_talktalk`
-14. `wakanet_fibre`
-15. `wakanet_4g_router_speeds`
-16. `wakanet_4g_router_bundles`
-17. `wakanet_5g_bundles`
-18. `wakanet_5g_speeds`
+6. `airtel_monthly_combo`
+7. `airtel_chillax_calls`
+8. `airtel_monthly_calls`
+9. `mtn_monthly_data`
+10. `mtn_freedom_data`
+11. `mtn_gaga`
+12. `mtn_annual`
+13. `mtn_freedom_calls`
+14. `mtn_monthly_minutes`
+15. `mtn_talktalk`
+16. `wakanet_fibre`
+17. `wakanet_4g_router_speeds`
+18. `wakanet_4g_router_bundles`
+19. `wakanet_5g_bundles`
+20. `wakanet_5g_speeds`
 
 ### Fallback:
-If Google Sheets API fails, fall back to `data/services.json` (local fallback file — always kept updated).
+If Google Sheets API fails, fall back to `data/services.json` (local fallback file).
 
 ---
 
 ## Services Data
-All services and current prices are in `data/services.json`. Use this as the fallback and the source of truth for initial setup.
+All services and current prices are in `data/services.json`. Used as fallback and source of truth for initial setup.
 
 ---
 
-## Environment Variables Needed
+## Environment Variables
 ```
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
-MAKE_WEBHOOK_URL=
 GOOGLE_SHEETS_API_KEY=
 GOOGLE_SHEET_ID=
+ADMIN_PASSWORD=mugabe123
 ```
 
 ---
 
-## Pages to Build
+## Pages
 1. `/` — Homepage with service category cards
 2. `/services/[category]` — List of bundles in that category
-3. `/order/[bundleId]` — Order form (name, phone, payment upload)
+3. `/order/[bundleId]` — Order form (name, phone, payment upload, WhatsApp send)
 4. `/order/success` — Confirmation page
-5. `/admin/preview` — Simple preview of what's in the Google Sheet (optional, protected)
+5. `/admin` — Admin page for editing services.json (password-protected)
 
 ---
 
@@ -117,27 +117,28 @@ GOOGLE_SHEET_ID=
 
 ---
 
-## WhatsApp Notification Format (Make.com webhook payload)
-```json
-{
-  "customer_name": "John Doe",
-  "customer_phone": "0701234567",
-  "service_category": "Airtel Data",
-  "bundle_name": "Freaky Weekend 9GB",
-  "price": "9000",
-  "payment_method": "MTN MoMo",
-  "screenshot_url": "https://cloudinary.com/...",
-  "timestamp": "2026-03-09 14:30"
-}
+## WhatsApp Message Format
+Pre-filled message sent via `wa.me/256787767132?text=...`:
 ```
-Make.com formats this into a WhatsApp message to 0787767132.
+Hello Mr. Mugabe! 👋
+
+*New Order*
+------------------------
+📦 Bundle: [bundle name]
+💰 Price: [price] UGX
+📱 My Number: [customer phone]
+👤 Name: [customer name]
+💳 Payment: [MTN MoMo / Airtel Money]
+🖼️ Screenshot: [cloudinary URL]
+------------------------
+I have made the payment. Please confirm. 🙏
+```
 
 ---
 
 ## Security Notes
-- Never expose Cloudinary secret or Make.com webhook URL on the client
+- Never expose Cloudinary secret on the client
 - All file uploads go through `/api/upload` server route
-- Webhook fires from `/api/order` server route only
 - Validate file type (image only) and size (max 5MB) on upload
 
 ---
@@ -158,3 +159,4 @@ Make.com formats this into a WhatsApp message to 0787767132.
 - Order history / database
 - Cart / multi-item orders (one order at a time)
 - Airtime conversion or Yaka/NWSC (Mr. Mugabe handles these manually via WhatsApp)
+- Make.com webhooks or any third-party notification service
