@@ -45,13 +45,3 @@ export interface ServicesData {
   categories: Category[];
 }
 
-export interface OrderPayload {
-  customer_name: string;
-  customer_phone: string;
-  service_category: string;
-  bundle_name: string;
-  price: string;
-  payment_method: string;
-  screenshot_url: string;
-  timestamp: string;
-}

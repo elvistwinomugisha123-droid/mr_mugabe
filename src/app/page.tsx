@@ -2,7 +2,7 @@ import { getServices } from "@/lib/services";
 import CategoryCard from "@/components/CategoryCard";
 import { MapPin } from "lucide-react";
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function HomePage() {
   const data = await getServices();

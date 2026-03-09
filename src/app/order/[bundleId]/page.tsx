@@ -2,7 +2,7 @@ import { getServices, findBundle } from "@/lib/services";
 import { notFound } from "next/navigation";
 import OrderForm from "./OrderForm";
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function OrderPage({
   params,

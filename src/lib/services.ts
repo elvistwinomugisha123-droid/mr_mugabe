@@ -10,13 +10,15 @@ const SHEET_TABS = [
   "airtel_4day_combo",
   "airtel_monthly",
   "airtel_mifi_monthly",
-  "airtel_komuga",
+  "airtel_monthly_combo",
+  "airtel_chillax_calls",
+  "airtel_monthly_calls",
   "mtn_monthly_data",
   "mtn_freedom_data",
   "mtn_gaga",
   "mtn_annual",
-  "mtn_voice_freedom",
-  "mtn_voice_monthly",
+  "mtn_freedom_calls",
+  "mtn_monthly_minutes",
   "mtn_talktalk",
   "wakanet_fibre",
   "wakanet_4g_router_speeds",
@@ -31,7 +33,7 @@ async function fetchSheetTab(tabName: string): Promise<Bundle[]> {
   }
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${tabName}?key=${GOOGLE_SHEETS_API_KEY}`;
-  const res = await fetch(url, { next: { revalidate: 60 } });
+  const res = await fetch(url, { next: { revalidate: 300 } });
 
   if (!res.ok) throw new Error(`Failed to fetch ${tabName}`);
 

@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { ArrowLeft, Upload, Loader2, CheckCircle } from "lucide-react";
+import { ArrowLeft, Upload, Loader2, CheckCircle, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 import type { Bundle, PaymentInfo } from "@/lib/types";
@@ -18,18 +17,17 @@ export default function OrderForm({
   subcategory: string;
   payment: { mtn: PaymentInfo; airtel: PaymentInfo };
 }) {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [paymentMethod, setPaymentMethod] = useState<"mtn" | "airtel">("mtn");
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+  const [screenshotUrl, setScreenshotUrl] = useState("");
   const [error, setError] = useState("");
 
   const selectedPayment = paymentMethod === "mtn" ? payment.mtn : payment.airtel;
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleUploadAndSend(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
@@ -58,35 +56,51 @@ export default function OrderForm({
       }
 
       setUploading(false);
-      setSubmitting(true);
+      const uploadedUrl = uploadData.url;
+      setScreenshotUrl(uploadedUrl);
 
-      const orderRes = await fetch("/api/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customer_name: name.trim(),
-          customer_phone: phone.trim(),
-          service_category: category,
-          bundle_name: `${subcategory} — ${bundle.name}`,
-          price: bundle.price_ugx.toString(),
-          payment_method: paymentMethod === "mtn" ? "MTN MoMo" : "Airtel Money",
-          screenshot_url: uploadData.url,
-        }),
-      });
+      // Build WhatsApp message
+      const paymentLabel = paymentMethod === "mtn" ? "MTN MoMo" : "Airtel Money";
+      const bundleName = `${subcategory} — ${bundle.name}`;
+      const message = `Hello Mr. Mugabe! 👋
 
-      if (!orderRes.ok) {
-        const orderData = await orderRes.json();
-        setError(orderData.error || "Order failed");
-        setSubmitting(false);
-        return;
-      }
+*New Order*
+------------------------
+📦 Bundle: ${bundleName}
+💰 Price: ${formatPrice(bundle.price_ugx)}
+📱 My Number: ${phone.trim()}
+👤 Name: ${name.trim()}
+💳 Payment: ${paymentLabel}
+🖼️ Screenshot: ${uploadedUrl}
+------------------------
+I have made the payment. Please confirm. 🙏`;
 
-      router.push("/order/success");
+      const whatsappUrl = `https://wa.me/256787767132?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
     } catch {
       setError("Something went wrong. Please try again.");
       setUploading(false);
-      setSubmitting(false);
     }
+  }
+
+  function handleSendAgain() {
+    const paymentLabel = paymentMethod === "mtn" ? "MTN MoMo" : "Airtel Money";
+    const bundleName = `${subcategory} — ${bundle.name}`;
+    const message = `Hello Mr. Mugabe! 👋
+
+*New Order*
+------------------------
+📦 Bundle: ${bundleName}
+💰 Price: ${formatPrice(bundle.price_ugx)}
+📱 My Number: ${phone.trim()}
+👤 Name: ${name.trim()}
+💳 Payment: ${paymentLabel}
+🖼️ Screenshot: ${screenshotUrl}
+------------------------
+I have made the payment. Please confirm. 🙏`;
+
+    const whatsappUrl = `https://wa.me/256787767132?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   }
 
   return (
@@ -109,7 +123,7 @@ export default function OrderForm({
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleUploadAndSend} className="space-y-5">
         <div className="space-y-3">
           <label className="block">
             <span className="text-sm font-semibold text-foreground">Full Name</span>
@@ -210,25 +224,45 @@ export default function OrderForm({
           </div>
         )}
 
-        <button
-          type="submit"
-          disabled={uploading || submitting}
-          className="w-full bg-accent text-primary font-bold py-4 rounded-xl text-lg transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {uploading ? (
-            <span className="flex items-center justify-center gap-2">
-              <Loader2 className="w-5 h-5 animate-spin" />
-              Uploading Screenshot...
-            </span>
-          ) : submitting ? (
-            <span className="flex items-center justify-center gap-2">
-              <Loader2 className="w-5 h-5 animate-spin" />
-              Placing Order...
-            </span>
-          ) : (
-            "Submit Order"
-          )}
-        </button>
+        {screenshotUrl ? (
+          <div className="space-y-3">
+            <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm text-center">
+              Screenshot uploaded! Tap the button below to send your order.
+            </div>
+            <button
+              type="button"
+              onClick={handleSendAgain}
+              className="w-full bg-green-600 text-white font-bold py-4 rounded-xl text-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Send Order via WhatsApp
+            </button>
+            <Link
+              href="/"
+              className="block w-full border-2 border-primary text-primary font-semibold py-3 rounded-xl text-center"
+            >
+              Back to Home
+            </Link>
+          </div>
+        ) : (
+          <button
+            type="submit"
+            disabled={uploading}
+            className="w-full bg-green-600 text-white font-bold py-4 rounded-xl text-lg transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {uploading ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                Uploading Screenshot...
+              </>
+            ) : (
+              <>
+                <MessageCircle className="w-5 h-5" />
+                Send Order via WhatsApp
+              </>
+            )}
+          </button>
+        )}
       </form>
     </div>
   );
