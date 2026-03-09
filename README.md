@@ -1,40 +1,36 @@
-# Mr. Mugabe Digital Services — PWA
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A mobile-first Progressive Web App for ordering telecom bundles in Kampala, Uganda.
+## Getting Started
 
-## Quick Start
+First, run the development server:
 
 ```bash
-npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*"
-npm install next-pwa cloudinary @google-cloud/local-auth googleapis
-npx shadcn@latest init
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Setup
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-1. Copy `.env.example` to `.env.local` and fill in all values
-2. Run `npm run dev`
-3. Deploy to Vercel
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Content Management
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Mr. Mugabe manages all prices via Google Sheets on his phone.
-- Open the linked Google Sheet
-- Edit any price, name, or validity
-- Add a new row to add a new bundle
-- Set `active` to FALSE to hide a bundle
-- Changes reflect on the website immediately
+## Learn More
 
-## Order Flow
+To learn more about Next.js, take a look at the following resources:
 
-Customer → Browse Services → Pick Plan → Fill Form → Upload Payment Screenshot → Submit → Mr. Mugabe gets WhatsApp alert
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Tech Stack
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- Next.js 15 (App Router)
-- Tailwind CSS + shadcn/ui  
-- next-pwa (installable PWA)
-- Cloudinary (screenshot uploads)
-- Make.com (WhatsApp notifications)
-- Google Sheets API (price management)
-- Vercel (hosting)
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
