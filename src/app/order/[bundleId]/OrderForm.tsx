@@ -106,18 +106,18 @@ I have made the payment. Please confirm. 🙏`;
   return (
     <div className="space-y-5">
       <div className="flex items-center gap-3">
-        <Link href="/" className="p-2 -ml-2 rounded-lg hover:bg-gray-100">
+        <Link href="/" className="p-2 -ml-2 rounded-lg hover:bg-white/10 text-white">
           <ArrowLeft className="w-5 h-5" />
         </Link>
-        <h1 className="text-xl font-bold text-primary">Place Order</h1>
+        <h1 className="text-xl font-bold text-accent">Place Order</h1>
       </div>
 
-      <div className="bg-primary/5 rounded-xl p-4 space-y-1">
-        <p className="text-sm text-foreground/60">{category} &bull; {subcategory}</p>
-        <p className="font-bold text-lg">{bundle.name}</p>
+      <div className="bg-white/10 border border-white/20 rounded-xl p-4 space-y-1">
+        <p className="text-sm text-white/60">{category} &bull; {subcategory}</p>
+        <p className="font-bold text-lg text-white">{bundle.name}</p>
         <p className="text-accent font-bold text-xl">{formatPrice(bundle.price_ugx)}</p>
         {bundle.validity && (
-          <span className="inline-block text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+          <span className="inline-block text-xs bg-accent/20 text-accent px-2 py-0.5 rounded-full">
             {bundle.validity}
           </span>
         )}
@@ -126,40 +126,40 @@ I have made the payment. Please confirm. 🙏`;
       <form onSubmit={handleUploadAndSend} className="space-y-5">
         <div className="space-y-3">
           <label className="block">
-            <span className="text-sm font-semibold text-foreground">Full Name</span>
+            <span className="text-sm font-semibold text-white">Full Name</span>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. John Doe"
-              className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-accent"
+              className="mt-1 w-full border border-white/20 bg-white/10 text-white placeholder:text-white/40 rounded-lg px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-accent"
               required
             />
           </label>
 
           <label className="block">
-            <span className="text-sm font-semibold text-foreground">Phone Number</span>
+            <span className="text-sm font-semibold text-white">Phone Number</span>
             <input
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="e.g. 0701234567"
-              className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-accent"
+              className="mt-1 w-full border border-white/20 bg-white/10 text-white placeholder:text-white/40 rounded-lg px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-accent"
               required
             />
           </label>
         </div>
 
         <div className="space-y-3">
-          <p className="text-sm font-semibold text-foreground">Payment Method</p>
+          <p className="text-sm font-semibold text-white">Payment Method</p>
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
               onClick={() => setPaymentMethod("mtn")}
               className={`border-2 rounded-lg p-3 text-center text-sm font-semibold transition-all ${
                 paymentMethod === "mtn"
-                  ? "border-yellow-400 bg-yellow-50 text-yellow-800"
-                  : "border-gray-200 text-gray-500"
+                  ? "border-yellow-400 bg-yellow-400/20 text-yellow-300"
+                  : "border-white/20 text-white/50"
               }`}
             >
               MTN MoMo
@@ -169,40 +169,40 @@ I have made the payment. Please confirm. 🙏`;
               onClick={() => setPaymentMethod("airtel")}
               className={`border-2 rounded-lg p-3 text-center text-sm font-semibold transition-all ${
                 paymentMethod === "airtel"
-                  ? "border-red-400 bg-red-50 text-red-800"
-                  : "border-gray-200 text-gray-500"
+                  ? "border-red-400 bg-red-400/20 text-red-300"
+                  : "border-white/20 text-white/50"
               }`}
             >
               Airtel Money
             </button>
           </div>
 
-          <div className="bg-gray-50 rounded-xl p-4 space-y-2 text-sm">
-            <p className="font-semibold text-primary">Send {formatPrice(bundle.price_ugx)} to:</p>
-            <div className="space-y-1">
-              <p><span className="text-foreground/60">Number:</span> <span className="font-bold">{selectedPayment.number}</span></p>
-              <p><span className="text-foreground/60">Name:</span> <span className="font-bold">{selectedPayment.name}</span></p>
-              <p><span className="text-foreground/60">Merchant Code:</span> <span className="font-bold">{selectedPayment.merchant_code}</span></p>
+          <div className="bg-white/10 border border-white/20 rounded-xl p-4 space-y-2 text-sm">
+            <p className="font-semibold text-accent">Send {formatPrice(bundle.price_ugx)} to:</p>
+            <div className="space-y-1 text-white">
+              <p><span className="text-white/60">Number:</span> <span className="font-bold">{selectedPayment.number}</span></p>
+              <p><span className="text-white/60">Name:</span> <span className="font-bold">{selectedPayment.name}</span></p>
+              <p><span className="text-white/60">Merchant Code:</span> <span className="font-bold">{selectedPayment.merchant_code}</span></p>
               {selectedPayment.merchant_name && (
-                <p><span className="text-foreground/60">Merchant:</span> <span className="font-bold">{selectedPayment.merchant_name}</span></p>
+                <p><span className="text-white/60">Merchant:</span> <span className="font-bold">{selectedPayment.merchant_name}</span></p>
               )}
             </div>
           </div>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-semibold text-foreground">Upload Payment Screenshot</p>
+          <p className="text-sm font-semibold text-white">Upload Payment Screenshot</p>
           <label className="block cursor-pointer">
             <div className={`border-2 border-dashed rounded-xl p-6 text-center transition-all ${
-              file ? "border-green-400 bg-green-50" : "border-gray-300 hover:border-accent"
+              file ? "border-green-400 bg-green-400/10" : "border-white/30 hover:border-accent"
             }`}>
               {file ? (
-                <div className="flex items-center justify-center gap-2 text-green-700">
+                <div className="flex items-center justify-center gap-2 text-green-400">
                   <CheckCircle className="w-5 h-5" />
                   <span className="text-sm font-medium">{file.name}</span>
                 </div>
               ) : (
-                <div className="space-y-2 text-gray-400">
+                <div className="space-y-2 text-white/40">
                   <Upload className="w-8 h-8 mx-auto" />
                   <p className="text-sm">Tap to upload screenshot</p>
                   <p className="text-xs">JPEG, PNG or WebP &bull; Max 5MB</p>
@@ -219,14 +219,14 @@ I have made the payment. Please confirm. 🙏`;
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+          <div className="bg-red-500/20 border border-red-400/30 text-red-300 px-4 py-3 rounded-lg text-sm">
             {error}
           </div>
         )}
 
         {screenshotUrl ? (
           <div className="space-y-3">
-            <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm text-center">
+            <div className="bg-green-500/20 border border-green-400/30 text-green-300 px-4 py-3 rounded-lg text-sm text-center">
               Screenshot uploaded! Tap the button below to send your order.
             </div>
             <button
@@ -239,7 +239,7 @@ I have made the payment. Please confirm. 🙏`;
             </button>
             <Link
               href="/"
-              className="block w-full border-2 border-primary text-primary font-semibold py-3 rounded-xl text-center"
+              className="block w-full border-2 border-accent text-accent font-semibold py-3 rounded-xl text-center"
             >
               Back to Home
             </Link>

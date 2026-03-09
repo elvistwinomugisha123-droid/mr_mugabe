@@ -22,11 +22,11 @@ export default async function CategoryPage({
       <div className="flex items-center gap-3">
         <Link
           href="/"
-          className="p-2 -ml-2 rounded-lg hover:bg-gray-100 active:bg-gray-200"
+          className="p-2 -ml-2 rounded-lg hover:bg-white/10 active:bg-white/20 text-white"
         >
           <ArrowLeft className="w-5 h-5" />
         </Link>
-        <h1 className="text-xl font-bold text-primary">{cat.name}</h1>
+        <h1 className="text-xl font-bold text-accent">{cat.name}</h1>
       </div>
 
       {cat.subcategories.map((sub) => {
@@ -35,7 +35,7 @@ export default async function CategoryPage({
 
         return (
           <section key={sub.id} className="space-y-2">
-            <h2 className="font-semibold text-sm text-foreground/70 uppercase tracking-wide">
+            <h2 className="font-semibold text-sm text-white/70 uppercase tracking-wide">
               {sub.name}
             </h2>
             <div className="space-y-2">
