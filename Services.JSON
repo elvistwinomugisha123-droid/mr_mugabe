@@ -1,0 +1,259 @@
+{
+  "business": {
+    "name": "Mr. Mugabe Digital Services",
+    "tagline": "Your Best Deals on Data, Calls & Internet",
+    "location": "Along Kisaasi Bukoto Road, Opposite ORXY Petrol Station near Tales Bar & Lounge",
+    "whatsapp": "0787767132",
+    "phone2": "0758320515",
+    "payment": {
+      "mtn": {
+        "number": "0787767132",
+        "name": "Mugabe Rodgers",
+        "merchant_code": "218269"
+      },
+      "airtel": {
+        "number": "0758320515",
+        "name": "Agaba Gaitan",
+        "merchant_code": "6106639",
+        "merchant_name": "KOMUGA"
+      }
+    }
+  },
+  "categories": [
+    {
+      "id": "airtel_data",
+      "name": "Airtel Data",
+      "icon": "signal",
+      "color": "red",
+      "subcategories": [
+        {
+          "id": "airtel_weekly",
+          "name": "Weekly Bundles",
+          "bundles": [
+            { "id": "aw1", "name": "900MB", "price_ugx": 2000, "validity": "7 days", "notes": "", "active": true },
+            { "id": "aw2", "name": "2.44GB", "price_ugx": 4500, "validity": "7 days", "notes": "", "active": true },
+            { "id": "aw3", "name": "4.88GB", "price_ugx": 9000, "validity": "7 days", "notes": "", "active": true }
+          ]
+        },
+        {
+          "id": "airtel_freaky_weekend",
+          "name": "Freaky Weekend",
+          "bundles": [
+            { "id": "afw1", "name": "3.5GB", "price_ugx": 3700, "validity": "Thu–Mon 6AM", "notes": "Shareable on Tugabane", "active": true },
+            { "id": "afw2", "name": "4.5GB", "price_ugx": 4500, "validity": "Thu–Mon 6AM", "notes": "Shareable on Tugabane", "active": true },
+            { "id": "afw3", "name": "5.2GB + 20 Mins", "price_ugx": 6300, "validity": "Thu–Mon 6AM", "notes": "Shareable on Tugabane", "active": true },
+            { "id": "afw4", "name": "8GB + 20 Mins", "price_ugx": 9000, "validity": "Thu–Mon 6AM", "notes": "Shareable on Tugabane", "active": true },
+            { "id": "afw5", "name": "9GB", "price_ugx": 9000, "validity": "Thu–Mon 6AM", "notes": "Shareable on Tugabane", "active": true }
+          ]
+        },
+        {
+          "id": "airtel_4day_combo",
+          "name": "4-Day Combo",
+          "bundles": [
+            { "id": "a4d1", "name": "5GB + 20 Mins", "price_ugx": 6500, "validity": "4 days", "notes": "", "active": true },
+            { "id": "a4d2", "name": "8GB + 20 Mins", "price_ugx": 9000, "validity": "4 days", "notes": "", "active": true }
+          ]
+        },
+        {
+          "id": "airtel_monthly",
+          "name": "Monthly Bundles (Komuga — 10% Off)",
+          "bundles": [
+            { "id": "am1", "name": "1.3GB", "price_ugx": 4500, "validity": "30 days", "notes": "Chillax", "active": true },
+            { "id": "am2", "name": "2GB", "price_ugx": 7000, "validity": "30 days", "notes": "Chillax", "active": true },
+            { "id": "am3", "name": "3.25GB", "price_ugx": 9000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "am4", "name": "5GB", "price_ugx": 14500, "validity": "30 days", "notes": "Chillax", "active": true },
+            { "id": "am5", "name": "8GB", "price_ugx": 23000, "validity": "30 days", "notes": "Chillax", "active": true },
+            { "id": "am6", "name": "12GB", "price_ugx": 27000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "am7", "name": "17GB", "price_ugx": 45000, "validity": "30 days", "notes": "Chillax", "active": true },
+            { "id": "am8", "name": "22GB", "price_ugx": 45000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "am9", "name": "48GB", "price_ugx": 90000, "validity": "30 days", "notes": "", "active": true }
+          ]
+        },
+        {
+          "id": "airtel_mifi_monthly",
+          "name": "4G MiFi Monthly",
+          "bundles": [
+            { "id": "amifi1", "name": "5GB", "price_ugx": 9000, "validity": "30 days", "notes": "MiFi", "active": true },
+            { "id": "amifi2", "name": "15GB", "price_ugx": 23000, "validity": "30 days", "notes": "MiFi", "active": true },
+            { "id": "amifi3", "name": "40GB", "price_ugx": 45000, "validity": "30 days", "notes": "MiFi", "active": true },
+            { "id": "amifi4", "name": "110GB", "price_ugx": 90000, "validity": "30 days", "notes": "MiFi", "active": true },
+            { "id": "amifi5", "name": "235GB", "price_ugx": 180000, "validity": "30 days", "notes": "MiFi", "active": true }
+          ]
+        },
+        {
+          "id": "airtel_monthly_combo",
+          "name": "Monthly Combo (Data + Calls)",
+          "bundles": [
+            { "id": "amc1", "name": "10GB + 100 All-Net Mins + 400 Airtel Mins", "price_ugx": 27000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "amc2", "name": "20GB + 200 All-Net Mins + 800 Airtel Mins", "price_ugx": 45000, "validity": "30 days", "notes": "", "active": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "airtel_calls",
+      "name": "Airtel Calls",
+      "icon": "phone",
+      "color": "red",
+      "subcategories": [
+        {
+          "id": "airtel_chillax_calls",
+          "name": "Chillax Call Bundles (All Networks)",
+          "bundles": [
+            { "id": "acc1", "name": "90 mins", "price_ugx": 4500, "validity": "30 days", "notes": "All Networks", "active": true },
+            { "id": "acc2", "name": "200 mins", "price_ugx": 9000, "validity": "30 days", "notes": "All Networks", "active": true },
+            { "id": "acc3", "name": "1300 mins", "price_ugx": 27000, "validity": "30 days", "notes": "All Networks", "active": true }
+          ]
+        },
+        {
+          "id": "airtel_monthly_calls",
+          "name": "Airtel Monthly Calls",
+          "bundles": [
+            { "id": "amc_c1", "name": "125 mins", "price_ugx": 4500, "validity": "30 days", "notes": "Airtel Only", "active": true },
+            { "id": "amc_c2", "name": "600 mins", "price_ugx": 9000, "validity": "30 days", "notes": "Airtel Only", "active": true },
+            { "id": "amc_c3", "name": "750 mins", "price_ugx": 9000, "validity": "30 days", "notes": "Airtel Only", "active": true },
+            { "id": "amc_c4", "name": "2000 mins", "price_ugx": 27000, "validity": "30 days", "notes": "Airtel Only", "active": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mtn_data",
+      "name": "MTN Data",
+      "icon": "wifi",
+      "color": "yellow",
+      "subcategories": [
+        {
+          "id": "mtn_monthly_data",
+          "name": "Monthly Data Bundles",
+          "bundles": [
+            { "id": "mmd1", "name": "3.2GB", "price_ugx": 9000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "mmd2", "name": "10GB", "price_ugx": 23000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "mmd3", "name": "22GB", "price_ugx": 44000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "mmd4", "name": "48GB", "price_ugx": 88000, "validity": "30 days", "notes": "", "active": true },
+            { "id": "mmd5", "name": "85GB", "price_ugx": 150000, "validity": "30 days", "notes": "", "active": true }
+          ]
+        },
+        {
+          "id": "mtn_freedom_data",
+          "name": "Freedom Bundles (No Expiry)",
+          "bundles": [
+            { "id": "mfd1", "name": "4.5GB", "price_ugx": 14000, "validity": "No Expiry", "notes": "", "active": true },
+            { "id": "mfd2", "name": "8GB", "price_ugx": 23000, "validity": "No Expiry", "notes": "", "active": true },
+            { "id": "mfd3", "name": "17GB", "price_ugx": 45000, "validity": "No Expiry", "notes": "", "active": true },
+            { "id": "mfd4", "name": "27GB", "price_ugx": 67000, "validity": "No Expiry", "notes": "", "active": true },
+            { "id": "mfd5", "name": "40GB", "price_ugx": 90000, "validity": "No Expiry", "notes": "", "active": true },
+            { "id": "mfd6", "name": "65GB", "price_ugx": 135000, "validity": "No Expiry", "notes": "", "active": true }
+          ]
+        },
+        {
+          "id": "mtn_gaga",
+          "name": "Gaga Bundles",
+          "bundles": [
+            { "id": "mg1", "name": "5GB + 20 Mins", "price_ugx": 6500, "validity": "Mon–Thu 6AM", "notes": "Activate Mon–Wed", "active": true },
+            { "id": "mg2", "name": "8GB + 20 Mins", "price_ugx": 9000, "validity": "Mon–Thu 6AM", "notes": "Activate Mon–Wed", "active": true },
+            { "id": "mg3", "name": "9GB", "price_ugx": 9000, "validity": "Till Monday 6AM", "notes": "Weekend offer", "active": true }
+          ]
+        },
+        {
+          "id": "mtn_annual",
+          "name": "4G MTN Annual Bundles",
+          "bundles": [
+            { "id": "ma1", "name": "14GB", "price_ugx": 32000, "validity": "Annual", "notes": "", "active": true },
+            { "id": "ma2", "name": "25GB", "price_ugx": 50000, "validity": "Annual", "notes": "", "active": true },
+            { "id": "ma3", "name": "45GB", "price_ugx": 78000, "validity": "Annual", "notes": "+YoTV", "active": true },
+            { "id": "ma4", "name": "95GB", "price_ugx": 175000, "validity": "Annual", "notes": "+YoTV", "active": true },
+            { "id": "ma5", "name": "195GB", "price_ugx": 315000, "validity": "Annual", "notes": "+YoTV", "active": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mtn_calls",
+      "name": "MTN Calls",
+      "icon": "phone-call",
+      "color": "yellow",
+      "subcategories": [
+        {
+          "id": "mtn_freedom_calls",
+          "name": "Freedom Bundle Calls (No Expiry)",
+          "bundles": [
+            { "id": "mfc1", "name": "90 mins", "price_ugx": 4500, "validity": "No Expiry", "notes": "All Networks", "active": true },
+            { "id": "mfc2", "name": "200 mins", "price_ugx": 9000, "validity": "No Expiry", "notes": "All Networks", "active": true },
+            { "id": "mfc3", "name": "1300 mins", "price_ugx": 27000, "validity": "No Expiry", "notes": "All Networks", "active": true },
+            { "id": "mfc4", "name": "2500 mins", "price_ugx": 45000, "validity": "No Expiry", "notes": "All Networks", "active": true },
+            { "id": "mfc5", "name": "4500 mins", "price_ugx": 68000, "validity": "No Expiry", "notes": "All Networks", "active": true }
+          ]
+        },
+        {
+          "id": "mtn_monthly_minutes",
+          "name": "MTN Monthly Minutes (10% Off)",
+          "bundles": [
+            { "id": "mmm1", "name": "300 mins", "price_ugx": 9000, "validity": "30 days", "notes": "MTN Only", "active": true },
+            { "id": "mmm2", "name": "1000 mins", "price_ugx": 18000, "validity": "30 days", "notes": "MTN Only", "active": true },
+            { "id": "mmm3", "name": "2400 mins", "price_ugx": 30000, "validity": "30 days", "notes": "MTN Only", "active": true }
+          ]
+        },
+        {
+          "id": "mtn_talktalk",
+          "name": "Talk & Talk",
+          "bundles": [
+            { "id": "mtt1", "name": "1300 mins", "price_ugx": 25000, "validity": "No Expiry", "notes": "All Networks", "active": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wakanet",
+      "name": "MTN Wakanet Internet",
+      "icon": "router",
+      "color": "blue",
+      "subcategories": [
+        {
+          "id": "wakanet_fibre",
+          "name": "Wakanet Fibre (Monthly)",
+          "bundles": [
+            { "id": "wf1", "name": "100Mbps", "price_ugx": 90000, "validity": "30 days", "notes": "Fibre", "active": true },
+            { "id": "wf2", "name": "200Mbps", "price_ugx": 117000, "validity": "30 days", "notes": "Fibre", "active": true },
+            { "id": "wf3", "name": "500Mbps", "price_ugx": 225000, "validity": "30 days", "notes": "Fibre", "active": true }
+          ]
+        },
+        {
+          "id": "wakanet_4g_router_speeds",
+          "name": "4G Wakanet Router Speeds (Monthly)",
+          "bundles": [
+            { "id": "w4rs1", "name": "3mbps", "price_ugx": 49000, "validity": "30 days", "notes": "4G Router", "active": true },
+            { "id": "w4rs2", "name": "5mbps", "price_ugx": 76000, "validity": "30 days", "notes": "4G Router", "active": true },
+            { "id": "w4rs3", "name": "10mbps", "price_ugx": 115000, "validity": "30 days", "notes": "4G Router", "active": true }
+          ]
+        },
+        {
+          "id": "wakanet_4g_router_bundles",
+          "name": "4G Wakanet Router Bundles",
+          "bundles": [
+            { "id": "w4rb1", "name": "50GB", "price_ugx": 49000, "validity": "30 days", "notes": "4G Router", "active": true },
+            { "id": "w4rb2", "name": "100GB", "price_ugx": 76000, "validity": "30 days", "notes": "4G Router", "active": true }
+          ]
+        },
+        {
+          "id": "wakanet_5g_bundles",
+          "name": "5G Wakanet Bundles",
+          "bundles": [
+            { "id": "w5b1", "name": "85GB", "price_ugx": 43000, "validity": "30 days", "notes": "5G", "active": true },
+            { "id": "w5b2", "name": "250GB", "price_ugx": 130000, "validity": "30 days", "notes": "5G", "active": true }
+          ]
+        },
+        {
+          "id": "wakanet_5g_speeds",
+          "name": "5G Wakanet Speeds (Monthly)",
+          "bundles": [
+            { "id": "w5s1", "name": "15mbps", "price_ugx": 115000, "validity": "30 days", "notes": "5G", "active": true },
+            { "id": "w5s2", "name": "20mbps", "price_ugx": 170000, "validity": "30 days", "notes": "5G", "active": true },
+            { "id": "w5s3", "name": "40mbps", "price_ugx": 260000, "validity": "30 days", "notes": "5G", "active": true },
+            { "id": "w5s4", "name": "100mbps", "price_ugx": 440000, "validity": "30 days", "notes": "5G", "active": true }
+          ]
+        }
+      ]
+    }
+  ]
+}
