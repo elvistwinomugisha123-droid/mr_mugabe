@@ -36,7 +36,7 @@ export default async function HomePage() {
         <div className="relative w-full h-48">
           <Image
             src="/mr-mugabe-airtime.svg"
-            alt="Mr. Mugabe — Convert your excess Airtime to Cash"
+            alt="MR. MUGABE — Convert your excess Airtime to Cash"
             fill
             className="object-cover object-top"
             priority
@@ -45,10 +45,10 @@ export default async function HomePage() {
         <div className="p-4 text-center space-y-2">
           <p className="font-bold text-accent text-lg">Convert Your Extra Airtime to Cash</p>
           <p className="text-white/70 text-sm">
-            Stuck with excess airtime? Mr. Mugabe helps you convert it to cash instantly!
+            Stuck with excess airtime? MR. MUGABE helps you convert it to cash instantly!
           </p>
           <a
-            href="https://wa.me/256787767132?text=Hello%20Mr.%20Mugabe!%20I%20want%20to%20convert%20my%20airtime%20to%20cash."
+            href="https://wa.me/256787767132?text=Hello%20MR.%20MUGABE!%20I%20want%20to%20convert%20my%20airtime%20to%20cash."
             className="inline-block bg-accent text-primary font-semibold px-5 py-2.5 rounded-lg mt-1"
           >
             Convert Airtime Now
@@ -59,7 +59,7 @@ export default async function HomePage() {
       <section className="bg-white/10 border border-white/20 rounded-xl p-4 text-center text-sm space-y-2">
         <p className="font-semibold text-accent">Need Airtime, Yaka, or NWSC?</p>
         <p className="text-white/70">
-          Contact Mr. Mugabe directly on WhatsApp for these services.
+          Contact MR. MUGABE directly on WhatsApp for these services.
         </p>
         <a
           href="https://wa.me/256787767132"
