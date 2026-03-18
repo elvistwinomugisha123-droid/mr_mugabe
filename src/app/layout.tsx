@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mr. Mugabe Digital Services",
+  title: "MR. MUGABE Digital Services",
   description: "Your Best Deals on Data, Calls & Internet in Kampala, Uganda",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Mr. Mugabe",
+    title: "MR. MUGABE",
   },
 };
 
@@ -26,11 +27,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8K0ETV4917"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8K0ETV4917');
+          `}
+        </Script>
+      </head>
       <body className="antialiased bg-background text-foreground">
         <header className="bg-primary text-white sticky top-0 z-50 border-b border-white/10">
           <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
             <a href="/" className="text-lg font-bold text-accent">
-              Mr. Mugabe
+              MR. MUGABE
             </a>
             <a
               href="https://wa.me/256787767132"
@@ -45,7 +60,7 @@ export default function RootLayout({
         </main>
         <footer className="bg-black/30 text-white py-6 border-t border-white/10">
           <div className="max-w-lg mx-auto px-4 text-center text-sm space-y-2">
-            <p className="font-semibold text-accent">Mr. Mugabe Digital Services</p>
+            <p className="font-semibold text-accent">MR. MUGABE Digital Services</p>
             <p>Along Kisaasi Bukoto Road, Opposite ORXY Petrol Station</p>
             <p>near Tales Bar & Lounge, Bukoto Kampala</p>
             <div className="flex justify-center gap-4 pt-2">

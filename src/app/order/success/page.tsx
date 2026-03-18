@@ -11,14 +11,14 @@ export default function OrderSuccess() {
       <div className="space-y-2">
         <h1 className="text-2xl font-bold text-accent">Order Received!</h1>
         <p className="text-white/70 max-w-xs mx-auto">
-          Thank you! Mr. Mugabe has been notified and will process your order shortly.
+          Thank you! MR. MUGABE has been notified and will process your order shortly.
         </p>
       </div>
 
       <div className="bg-white/10 border border-white/20 rounded-xl p-4 text-sm space-y-2 max-w-xs">
         <p className="font-semibold text-accent">What happens next?</p>
         <ol className="text-left space-y-1 text-white/70 list-decimal list-inside">
-          <li>Mr. Mugabe verifies your payment</li>
+          <li>MR. MUGABE verifies your payment</li>
           <li>Your bundle is activated</li>
           <li>You get a confirmation via WhatsApp or call</li>
         </ol>
@@ -29,7 +29,7 @@ export default function OrderSuccess() {
           href="https://wa.me/256787767132"
           className="block w-full bg-green-600 text-white font-semibold py-3 rounded-xl text-center"
         >
-          Chat with Mr. Mugabe
+          Chat with MR. MUGABE
         </a>
         <Link
           href="/"

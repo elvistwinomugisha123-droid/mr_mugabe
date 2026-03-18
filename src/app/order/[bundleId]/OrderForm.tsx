@@ -62,7 +62,7 @@ export default function OrderForm({
       // Build WhatsApp message
       const paymentLabel = paymentMethod === "mtn" ? "MTN MoMo" : "Airtel Money";
       const bundleName = `${subcategory} — ${bundle.name}`;
-      const message = `Hello Mr. Mugabe! 👋
+      const message = `Hello MR. MUGABE! 👋
 
 *New Order*
 ------------------------
@@ -86,7 +86,7 @@ I have made the payment. Please confirm. 🙏`;
   function handleSendAgain() {
     const paymentLabel = paymentMethod === "mtn" ? "MTN MoMo" : "Airtel Money";
     const bundleName = `${subcategory} — ${bundle.name}`;
-    const message = `Hello Mr. Mugabe! 👋
+    const message = `Hello MR. MUGABE! 👋
 
 *New Order*
 ------------------------
